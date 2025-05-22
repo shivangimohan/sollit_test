@@ -26,7 +26,7 @@ test.describe('Test 2: Map Search', () => {
   });
 
   // Test for navigating to map search and using location search  
-  test.only('Use Search on map option and search by location', async ({ page }) => {
+  test('Use Search on map option and search by location', async ({ page }) => {
     // Get the MapPage object
     const { mapPage } = initializePages(page);
     

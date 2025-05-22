@@ -1,4 +1,4 @@
-# Funda.nl Test Automation
+# Sollit Test Automation
 
 A comprehensive test automation suite for Funda.nl using Playwright, implementing the Page Object Model pattern with robust CAPTCHA handling and comprehensive test coverage.
 
@@ -9,6 +9,7 @@ This project provides automated testing for Funda.nl's core functionality includ
 - Property search (map and list views)
 - Advanced filtering capabilities
 - View switching (list/card views)
+- PDF brochure download validation
 - Network request mocking
 
 ## 🚀 Key Features
@@ -18,13 +19,14 @@ This project provides automated testing for Funda.nl's core functionality includ
 - **Session Persistence**: Login state management across test runs
 - **Dynamic Test Data**: JSON-driven test configuration
 - **Cross-View Validation**: Ensures consistency between list and card views
+- **PDF Download Testing**: Validates brochure downloads with new tab handling
 - **Network Mocking**: API response simulation for reliable testing
 - **Comprehensive Logging**: Detailed execution logs for debugging
 
 ## 📁 Project Structure
 
 ```
-funda-tests/
+sollit-test/
 ├── data/
 │   ├── credentials.json      # Test user credentials
 │   ├── test-data.json       # Test data configuration
@@ -41,6 +43,7 @@ funda-tests/
 │   ├── test1-account.spec.js      # Account management tests
 │   ├── test2-map-search.spec.js   # Map search functionality
 │   ├── test3-list-card-view.spec.js # View switching tests
+│   ├── test4-download-brochure.spec.js # PDF brochure download tests
 │   ├── test5-filters.spec.js      # Filter testing
 │   └── test6-network-mock.spec.js # Network mocking tests
 ├── utils/
@@ -179,6 +182,12 @@ Customize test data:
 - ✅ Data consistency validation
 - ✅ Cross-view property matching
 
+### Test 4: Download Brochure
+- ✅ PDF brochure link detection and clicking
+- ✅ New tab handling for PDF opening
+- ✅ PDF file validation (URL and content)
+- ✅ Tab cleanup and management
+
 ### Test 5: Advanced Filtering
 - ✅ Price range filtering
 - ✅ Living area specifications
@@ -237,6 +246,3 @@ DEBUG=pw:api npm test
 - **Credentials**: Store sensitive data in environment variables for production
 - **State Files**: Add `data/state.json` to `.gitignore` 
 - **Test Data**: Use disposable test accounts for automated testing
-
-
----

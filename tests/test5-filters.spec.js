@@ -9,7 +9,6 @@ const ensureLoggedIn = require('../utils/ensureLoggedIn');
 test.describe('Test 5: List View Filter Tests', () => {
     // Load test data before all tests
     let searchData;
-    const stateFilePath = path.resolve(__dirname, '../state.json');
 
     test.beforeAll(async () => {
       searchData = await getTestData('filters');
