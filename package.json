@@ -1,0 +1,27 @@
+{
+  "name": "funda-tests",
+  "version": "1.0.0",
+  "description": "QA Test Automation for Funda.nl using Playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:captcha": "HEADLESS=false SLOW_MO=100 npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing",
+    "qa"
+  ],
+  "author": "2solar",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "dotenv": "^16.3.1",
+    "pdf-parse": "^1.1.1"
+  }
+}

@@ -1,0 +1,47 @@
+{
+    "registration": {
+      "email": "test_user@example.com",
+      "password": "SecurePassword123!",
+      "firstName": "Test",
+      "lastName": "User",
+      "phoneNumber": "0612345678"
+    },
+    "search": {
+      "keywords": ["appartement", "huis", "nieuwbouw"],
+      "locations": ["Amsterdam", "Utrecht", "Rotterdam"],
+      "postcodes": ["1012JS", "3511JW", "3072AP"],
+      "coordinates": [
+        { "lat": 52.3676, "lng": 4.9041, "name": "Amsterdam Centrum" },
+        { "lat": 52.0907, "lng": 5.1214, "name": "Utrecht Centrum" },
+        { "lat": 51.9244, "lng": 4.4777, "name": "Rotterdam Centrum" }
+      ]
+    },
+    "filters": {
+      "price": {
+        "min": 200000,
+        "max": 400000
+      },
+      "livingArea": {
+        "min": 70,
+        "max": 120
+      },
+      "keywords": ["balkon", "tuin", "gerenoveerd"]
+    },
+    "specificListing": {
+      "id": "1234567890",
+      "title": "Modern appartement",
+      "location": "Amsterdam"
+    },
+    "mockApi": {
+      "url": "**/search?*",
+      "response": {
+        "data": [
+          {
+            "id": "123456",
+            "officeName": "Test Real Estate",
+            "reviewAverage": 9.5
+          }
+        ]
+      }
+    }
+}
