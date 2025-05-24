@@ -56,7 +56,7 @@ test.describe('Simple Network Mock Test', () => {
             mockDataFound = true;
           }
         } catch (error) {
-          console.log('⚠️ Could not read response:', error.message);
+          console.log('Could not read response:', error.message);
         }
       }
     });
@@ -64,25 +64,25 @@ test.describe('Simple Network Mock Test', () => {
     try {
       // Navigate directly without complex page methods
       await page.goto('https://www.funda.nl');
-      console.log('🏠 Navigated to Funda home page');
+      console.log('Navigated to Funda home page');
       
       // Simple search - just type in search box and trigger search
       await page.locator('input[data-testid="search-box"]').fill('Amsterdam');
-      console.log('⌨️ Typed Amsterdam in search box');
+      console.log('Typed Amsterdam in search box');
       
       // Try to trigger search
       await page.keyboard.press('Enter');
       console.log('Search triggered');
       
     } catch (error) {
-      console.log('⚠️ Navigation/search had issues but continuing:', error.message);
+      console.log('Navigation/search had issues but continuing:', error.message);
     }
     
     // Give a moment for any network requests (but no long waits)
     try {
       await page.waitForTimeout(1000);
     } catch (error) {
-      console.log('⚠️ Page timeout skipped:', error.message);
+      console.log('Page timeout skipped:', error.message);
     }
     
     // Quick check for interception
@@ -97,7 +97,7 @@ test.describe('Simple Network Mock Test', () => {
       console.log('Mock data from testdata.json successfully used!');
       expect(mockDataFound).toBeTruthy();
     } else {
-      console.log('ℹMock data not detected in response (but interception worked)');
+      console.log('Mock data not detected in response (but interception worked)');
     }
     
     console.log('Network mocking test completed successfully!');
