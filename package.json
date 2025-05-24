@@ -1,8 +1,7 @@
 {
-  "name": "funda-tests",
+  "name": "sollit-test",
   "version": "1.0.0",
   "description": "QA Test Automation for Funda.nl using Playwright",
-  "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
@@ -17,7 +16,7 @@
     "testing",
     "qa"
   ],
-  "author": "2solar",
+  "author": "Shivangi Mohan",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.40.0",

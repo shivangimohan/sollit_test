@@ -44,9 +44,6 @@ module.exports = defineConfig({
     // Configure browser storage state path for login persistence
     storageState: './data/state.json',
     
-    // Download directory for PDF brochures
-    downloadsPath: './downloads',
-    
     // IMPORTANT: Default to non-headless mode for CAPTCHA testing
     headless: false,
     
