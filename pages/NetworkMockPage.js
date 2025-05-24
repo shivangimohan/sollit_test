@@ -26,77 +26,6 @@ class NetworkMockPage extends BasePage {
     };
   }
 
-  
-  /**
-   * Perform a basic search
-   * @param {string} searchTerm - Term to search for
-   */
-  async performSearch(searchTerm) {
-    console.log(`Searching for: ${searchTerm}`);
-    
-   // Try to find and click the search box
-   let searchBoxVisible = false;
-    
-   // Try the primary selector first
-   try {
-     searchBoxVisible = await this.page.locator(this.selectors.searchBox).isVisible({ timeout: 5000 });
-   } catch (e) {
-     console.log('Primary search box not found, trying fallback');
-   }
-   
-    await this.page.locator(this.selectors.searchBox).click();
-   
-   // Wait for the input field to appear and be clickable
-   console.log('Waiting for search input field to be visible');
-   await this.page.waitForSelector(this.selectors.searchBoxInput, { state: 'visible', timeout: 10000 });
-   
-   // Clear the input field and type the searchTerm
-   await this.page.locator(this.selectors.searchBoxInput).first().fill('');
-   console.log('Typing search term:', searchTerm);
-   await this.page.locator(this.selectors.searchBoxInput).first().fill(searchTerm);
-   
-   // Wait for suggestions to appear
-   console.log('Waiting for search suggestions to appear');
-   try {
-     // First try to use the XPath selector for the suggestions
-     await this.page.waitForSelector(this.selectors.searchSuggestions, { timeout: 10000 });
-     
-     
-     // Click on the first suggestion that contains our searchTerm
-     console.log('Clicking suggestion that matches:', searchTerm);
-     
-     // Using an XPath selector to find the suggestion containing our searchTerm text
-     const suggestionXPath = `${this.selectors.searchSuggestions}//li[contains(., "${searchTerm}")]`;
-     
-     // Check if any matching suggestions exist
-     const hasSuggestions = await this.page.locator(suggestionXPath).count() > 0;
-     
-     if (hasSuggestions) {
-       // Click on the first matching suggestion
-       await this.page.locator(suggestionXPath).first().click();
-       console.log('Clicked on suggestion');
-     } else {
-       console.log('No matching suggestions found, trying to directly click an element that contains our searchTerm');
-       // Try a more general approach
-       await this.page.locator(`text="${searchTerm}"`).first().click();
-     }
-   } catch (error) {
-     console.log('Error handling suggestions:', error);
-
-     console.log('Trying fallback method: pressing Enter');
-     
-     // As a fallback, press Enter and then try to click the search button if it exists
-     await this.page.keyboard.press('Enter');
-   }
-   
-   // Take a screenshot after the search (for debugging)
-   await this.page.screenshot({ path: 'after-search-completed.png' });
-   
-   // Wait for map to load with new search results
-   console.log('Waiting for map to load after search');
-   await this.waitForMapLoad();
- }
-
    /**
    * Start monitoring all network requests
    */
@@ -155,31 +84,6 @@ class NetworkMockPage extends BasePage {
             body: JSON.stringify(mockData)
           });
         });
-      }
-    
-      /**
-       * Navigate to home page and accept cookies
-       */
-      async navigateToHome() {
-        console.log('Navigating to home page');
-        await this.navigate();
-        await this.acceptCookiesIfVisible();
-      }
-    
-      /**
-       * Wait for page to load
-       */
-      async waitForMapLoad() {
-        await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(1000);
-      }
-    
-      /**
-       * Get all intercepted request URLs
-       * @returns {Array<string>} Array of URLs
-       */
-      getInterceptedUrls() {
-        return this.interceptedUrls;
       }
     
       /**
